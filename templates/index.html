@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Watchlist</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="main-container">
+        <div class="left-section">
+            <div class="header">
+                <h1>Watchlist</h1>
+            </div>
+
+            <div class="controls-bar">
+                <div class="control-item">
+                    <label>Display:</label>
+                    <select id="displayMode">
+                        <option value="price">Price</option>
+                        <option value="change">Price Change</option>
+                        <option value="change_pct">% Change</option>
+                    </select>
+                </div>
+
+                <div class="control-item">
+                    <label>Play One Stock:</label>
+                    <select id="playbackStock"></select>
+                    <input type="date" id="playbackDate">
+                    <button id="playDayBtn" class="btn btn-add">Play Day</button>
+                    <button id="stopBtn" class="btn btn-live" style="display:none;">Stop</button>
+                    <button id="viewLiveBtn" class="btn btn-live">Live</button>
+                    <span id="playbackBadge" class="playback-badge" style="display:none;">PLAYBACK</span>
+                </div>
+            </div>
+
+            <div id="playbackProgress" class="playback-progress" style="display:none;">
+                <span id="playbackTime" class="playback-time">--:--</span>
+                <div class="progress-track"><div id="progressFill" class="progress-fill"></div></div>
+                <span id="playbackPct" class="playback-pct">0%</span>
+            </div>
+
+            <table class="watchlist-table">
+                <thead>
+                    <tr>
+                        <th>Symbols</th>
+                        <th>Trend</th>
+                        <th>Price</th>
+                        <th>Change</th>
+                        <th>% Change</th>
+                        <th>Mkt Cap</th>
+                    </tr>
+                </thead>
+                <tbody id="stocksList">
+                    <tr><td colspan="6" class="loading">Loading...</td></tr>
+                </tbody>
+            </table>
+
+            <div class="bottom-controls">
+                <div class="add-stock">
+                    <input type="text" id="newTickerInput" placeholder="Enter ticker (e.g., AAPL)" maxlength="5">
+                    <button id="addStockBtn" class="btn btn-add">+ Add Stock</button>
+                </div>
+                <button id="runTickerBtn" class="btn btn-update">Update Arduino</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
