@@ -48,8 +48,6 @@ void loop() {
     Serial.print(currentAngle);
     Serial.print(",");
     Serial.println(distance);
-
-    // Move the motor backward (negative steps)
     myStepper.step(-11);
     delay(50);
   }
